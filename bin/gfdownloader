@@ -64,7 +64,7 @@ var downloadedFonts = [];
 	    		currentFont++;
 				requestFont();
 	    	} else {
-		    	var filename = fontName.toLowerCase() + "-" + fontVersions[currentFont] + "." + data.extension;
+		    	var filename = fontName.toLowerCase().replace(/\+/g, '') + "-" + fontVersions[currentFont] + "." + data.extension;
 				var r = request(fontUrls[currentFont]).pipe(fs.createWriteStream(dstPath + filename));
 				r.on('close', function() {
 					//console.log("File : " + filename + " created with success!");
